@@ -1,0 +1,56 @@
+{
+    "folders": [
+        {
+            "path": "./"
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "usart.h": "c",
+            "sys.h": "c",
+            "stm32f4xx.h": "c",
+            "pwm.h": "c",
+            "stm32f4xx_conf.h": "c",
+            "__locale": "c",
+            "__functional_03": "c",
+            "functional": "c",
+            "delay.h": "c",
+            "main.h": "c",
+            "memory": "c",
+            "stdio.h": "c",
+            "elog.h": "c",
+            "string.h": "c",
+            "mpconfig.h": "c",
+            "board.h": "c",
+            "drv_gpio.h": "c",
+            "drv_config.h": "c",
+            "spi_config.h": "c",
+            "uart_config.h": "c",
+            "sdio_config.h": "c",
+            "adc_config.h": "c",
+            "tim_config.h": "c",
+            "pwm_config.h": "c",
+            "rtthread.h": "c",
+            "drv_common.h": "c",
+            "rtconfig.h": "c",
+            "rtdef.h": "c",
+            "stm32f4xx_hal.h": "c",
+            "stm32f4xx_hal_conf.h": "c",
+            "stm32f4xx_hal_sram.h": "c",
+            "rtdevice.h": "c",
+            "waitqueue.h": "c",
+            "ringblk_buf.h": "c",
+            "workqueue.h": "c",
+            "ringbuffer.h": "c",
+            "completion.h": "c",
+            "poll.h": "c",
+            "pipe.h": "c",
+            "rtm.h": "c",
+            "rtdebug.h": "c",
+            "drv_log.h": "c",
+            "stdlib.h": "c",
+            "rtdbg.h": "c",
+            "adc.h": "c"
+        }
+    }
+}
