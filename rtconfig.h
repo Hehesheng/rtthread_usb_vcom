@@ -20,17 +20,7 @@
 #define RT_IDEL_HOOK_LIST_SIZE 4
 #define IDLE_THREAD_STACK_SIZE 1024
 /* RT_USING_TIMER_SOFT is not set */
-#define RT_DEBUG
-/* RT_DEBUG_INIT_CONFIG is not set */
-/* RT_DEBUG_THREAD_CONFIG is not set */
-/* RT_DEBUG_SCHEDULER_CONFIG is not set */
-/* RT_DEBUG_IPC_CONFIG is not set */
-/* RT_DEBUG_TIMER_CONFIG is not set */
-/* RT_DEBUG_IRQ_CONFIG is not set */
-/* RT_DEBUG_MEM_CONFIG is not set */
-/* RT_DEBUG_SLAB_CONFIG is not set */
-/* RT_DEBUG_MEMHEAP_CONFIG is not set */
-/* RT_DEBUG_MODULE_CONFIG is not set */
+/* RT_DEBUG is not set */
 
 /* Inter-Thread communication */
 
@@ -71,7 +61,7 @@
 #define RT_USING_COMPONENTS_INIT
 #define RT_USING_USER_MAIN
 #define RT_MAIN_THREAD_STACK_SIZE 2048
-#define RT_MAIN_THREAD_PRIORITY 21
+#define RT_MAIN_THREAD_PRIORITY 20
 
 /* C++ features */
 
@@ -106,11 +96,11 @@
 #define RT_USING_SERIAL
 #define RT_SERIAL_USING_DMA
 /* RT_USING_CAN is not set */
-#define RT_USING_HWTIMER
+/* RT_USING_HWTIMER is not set */
 /* RT_USING_CPUTIME is not set */
 /* RT_USING_I2C is not set */
 #define RT_USING_PIN
-#define RT_USING_ADC
+/* RT_USING_ADC is not set */
 /* RT_USING_PWM is not set */
 /* RT_USING_MTD_NOR is not set */
 /* RT_USING_MTD_NAND is not set */
@@ -223,6 +213,7 @@
 /* Wiced WiFi */
 
 /* PKG_USING_WLAN_WICED is not set */
+/* PKG_USING_RW007 is not set */
 /* PKG_USING_COAP is not set */
 /* PKG_USING_NOPOLL is not set */
 /* PKG_USING_NETUTILS is not set */
@@ -338,7 +329,7 @@
 
 /* Onboard Peripheral Drivers */
 
-#define BSP_USING_USB_TO_USART
+/* BSP_USING_USB_TO_USART is not set */
 /* BSP_USING_COM2 is not set */
 #define BSP_USING_COM3
 /* BSP_USING_SPI_FLASH is not set */
@@ -358,8 +349,7 @@
 /* BSP_USING_SPI1 is not set */
 /* BSP_USING_SPI2 is not set */
 /* BSP_SPI_USING_DMA is not set */
-#define BSP_USING_ADC
-#define BSP_USING_ADC1
+/* BSP_USING_ADC is not set */
 /* BSP_USING_I2C1 is not set */
 /* BSP_USING_ONCHIP_RTC is not set */
 /* BSP_USING_WDT is not set */
@@ -368,5 +358,6 @@
 
 /* Board extended module Drivers */
 
+#define BOARD_USING_AD9959
 
 #endif

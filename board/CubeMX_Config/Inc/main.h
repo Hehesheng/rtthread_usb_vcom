@@ -80,16 +80,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define AD9959_RST_Pin GPIO_PIN_6
-#define AD9959_RST_GPIO_Port GPIOF
-#define AD9959_UPDATE_Pin GPIO_PIN_7
-#define AD9959_UPDATE_GPIO_Port GPIOF
-#define AD9959_CS_Pin GPIO_PIN_8
-#define AD9959_CS_GPIO_Port GPIOF
-#define AD9959_SCK_Pin GPIO_PIN_9
-#define AD9959_SCK_GPIO_Port GPIOF
-#define AD9959_SDIO_Pin GPIO_PIN_10
-#define AD9959_SDIO_GPIO_Port GPIOF
 #define AD1256_RESET_Pin GPIO_PIN_8
 #define AD1256_RESET_GPIO_Port GPIOD
 #define AD1256_CS_Pin GPIO_PIN_9
@@ -113,7 +103,6 @@ void Error_Handler(void);
 #define AD9954_UPDATE_Pin GPIO_PIN_8
 #define AD9954_UPDATE_GPIO_Port GPIOG
 /* USER CODE BEGIN Private defines */
-#define AD9959_GPIO_Port GPIOF
 #define AD1256_GPIO_Port GPIOD
 #define AD9954_GPIO_Port GPIOG
 /* USER CODE END Private defines */

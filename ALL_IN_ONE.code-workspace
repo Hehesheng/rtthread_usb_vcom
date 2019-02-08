@@ -50,7 +50,8 @@
             "drv_log.h": "c",
             "stdlib.h": "c",
             "rtdbg.h": "c",
-            "adc.h": "c"
+            "adc.h": "c",
+            "errno.h": "c"
         }
     }
 }

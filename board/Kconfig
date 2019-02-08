@@ -177,6 +177,9 @@ menu "On-chip Peripheral Drivers"
 endmenu
 
 menu "Board extended module Drivers"
+    config BOARD_USING_AD9959
+        bool "Enable AD9959"
+        default n
 
 endmenu
 
