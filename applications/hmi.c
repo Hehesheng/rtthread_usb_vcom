@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <ulog.h>  //必须在 LOG_TAG 与 LOG_LVL 下面
 
-#define HMI_THREAD_STACK_SIZE (4096)
+#define HMI_THREAD_STACK_SIZE (2048)
 #define HMI_THREAD_PRIORITY (20)
 
 static rt_sem_t hmi_sem = RT_NULL;

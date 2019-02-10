@@ -51,7 +51,10 @@
             "stdlib.h": "c",
             "rtdbg.h": "c",
             "adc.h": "c",
-            "errno.h": "c"
+            "errno.h": "c",
+            "usb_device.h": "c",
+            "rtservice.h": "c",
+            "rthw.h": "c"
         }
     }
 }

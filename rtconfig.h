@@ -119,7 +119,22 @@
 /* Using USB */
 
 /* RT_USING_USB_HOST is not set */
-/* RT_USING_USB_DEVICE is not set */
+#define RT_USING_USB_DEVICE
+#define RT_USBD_THREAD_STACK_SZ 4096
+#define USB_VENDOR_ID 0x0FFE
+#define USB_PRODUCT_ID 0x0001
+/* RT_USB_DEVICE_COMPOSITE is not set */
+/* _RT_USB_DEVICE_NONE is not set */
+#define _RT_USB_DEVICE_CDC
+/* _RT_USB_DEVICE_MSTORAGE is not set */
+/* _RT_USB_DEVICE_HID is not set */
+/* _RT_USB_DEVICE_WINUSB is not set */
+#define RT_USB_DEVICE_CDC
+#define RT_VCOM_TASK_STK_SIZE 2048
+/* RT_VCOM_TX_USE_DMA is not set */
+#define RT_VCOM_SERNO "32021919830108"
+#define RT_VCOM_SER_LEN 14
+#define RT_VCOM_TX_TIMEOUT 1000
 
 /* POSIX layer and C standard library */
 
@@ -293,7 +308,18 @@
 /* PKG_USING_STM32_SDIO is not set */
 /* PKG_USING_ICM20608 is not set */
 /* PKG_USING_U8G2 is not set */
-/* PKG_USING_BUTTON is not set */
+#define PKG_USING_BUTTON
+#define SINGLE_AND_DOUBLE_TRIGGER
+/* CONTINUOS_TRIGGER is not set */
+#define LONG_FREE_TRIGGER
+#define BUTTON_DEBOUNCE_TIME 1
+#define BUTTON_CONTINUOS_CYCLE 1
+#define BUTTON_LONG_CYCLE 1
+#define BUTTON_DOUBLE_TIME 10
+#define BUTTON_LONG_TIME 30
+#define PKG_USING_BUTTON_V101
+/* PKG_USING_BUTTON_V100 is not set */
+/* PKG_USING_BUTTON_LATEST_VERSION is not set */
 /* PKG_USING_MPU6XXX is not set */
 /* PKG_USING_PCF8574 is not set */
 /* PKG_USING_KENDRYTE_SDK is not set */

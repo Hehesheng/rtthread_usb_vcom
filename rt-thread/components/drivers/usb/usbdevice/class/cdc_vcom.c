@@ -6,7 +6,7 @@
  * Change Logs:
  * Date           Author       Notes
  * 2012-10-02     Yi Qiu       first version
- * 2012-12-12     heyuanjie87  change endpoints and function handler 
+ * 2012-12-12     heyuanjie87  change endpoints and function handler
  * 2013-06-25     heyuanjie87  remove SOF mechinism
  * 2013-07-20     Yi Qiu       do more test
  * 2016-02-01     Urey         Fix some error
@@ -143,23 +143,23 @@ const static struct ucdc_comm_descriptor _comm_desc =
         USB_DESC_LENGTH_INTERFACE,
         USB_DESC_TYPE_INTERFACE,
         USB_DYNAMIC,
-        0x00,   
+        0x00,
         0x01,
         USB_CDC_CLASS_COMM,
         USB_CDC_SUBCLASS_ACM,
         USB_CDC_PROTOCOL_V25TER,
         0x00,
     },
-    /* Header Functional Descriptor */   
+    /* Header Functional Descriptor */
     {
-        0x05,                              
+        0x05,
         USB_CDC_CS_INTERFACE,
         USB_CDC_SCS_HEADER,
         0x0110,
     },
-    /* Call Management Functional Descriptor */   
+    /* Call Management Functional Descriptor */
     {
-        0x05,            
+        0x05,
         USB_CDC_CS_INTERFACE,
         USB_CDC_SCS_CALL_MGMT,
         0x00,
@@ -172,7 +172,7 @@ const static struct ucdc_comm_descriptor _comm_desc =
         USB_CDC_SCS_ACM,
         0x02,
     },
-    /* Union Functional Descriptor */   
+    /* Union Functional Descriptor */
     {
         0x05,
         USB_CDC_CS_INTERFACE,
@@ -180,7 +180,7 @@ const static struct ucdc_comm_descriptor _comm_desc =
         USB_DYNAMIC,
         USB_DYNAMIC,
     },
-    /* Endpoint Descriptor */    
+    /* Endpoint Descriptor */
     {
         USB_DESC_LENGTH_ENDPOINT,
         USB_DESC_TYPE_ENDPOINT,
@@ -201,27 +201,27 @@ const static struct ucdc_data_descriptor _data_desc =
         USB_DESC_TYPE_INTERFACE,
         USB_DYNAMIC,
         0x00,
-        0x02,         
+        0x02,
         USB_CDC_CLASS_DATA,
-        0x00,                             
-        0x00,                             
-        0x00,              
+        0x00,
+        0x00,
+        0x00,
     },
     /* endpoint, bulk out */
     {
-        USB_DESC_LENGTH_ENDPOINT,     
+        USB_DESC_LENGTH_ENDPOINT,
         USB_DESC_TYPE_ENDPOINT,
         USB_DYNAMIC | USB_DIR_OUT,
-        USB_EP_ATTR_BULK,      
+        USB_EP_ATTR_BULK,
         USB_CDC_BUFSIZE,
-        0x00,          
+        0x00,
     },
     /* endpoint, bulk in */
     {
         USB_DESC_LENGTH_ENDPOINT,
         USB_DESC_TYPE_ENDPOINT,
         USB_DYNAMIC | USB_DIR_IN,
-        USB_EP_ATTR_BULK,      
+        USB_EP_ATTR_BULK,
         USB_CDC_BUFSIZE,
         0x00,
     },
@@ -250,11 +250,11 @@ static void _vcom_reset_state(ufunction_t func)
 {
     struct vcom* data;
     int lvl;
-    
+
     RT_ASSERT(func != RT_NULL)
 
     data = (struct vcom*)func->user_data;
-    
+
     lvl = rt_hw_interrupt_disable();
     data->connected = RT_FALSE;
     data->in_sending = RT_FALSE;
@@ -296,9 +296,9 @@ static rt_err_t _ep_in_handler(ufunction_t func, rt_size_t size)
 
         return RT_EOK;
     }
-    
+
     rt_completion_done(&data->wait);
-    
+
     return RT_EOK;
 }
 
@@ -393,7 +393,7 @@ static rt_err_t _cdc_set_line_coding_callback(udevice_t device, rt_size_t size)
     RT_DEBUG_LOG(RT_DEBUG_USB, ("_cdc_set_line_coding_callback\n"));
 
     dcd_ep0_send_status(device->dcd);
-    
+
     return RT_EOK;
 }
 
@@ -435,7 +435,7 @@ static rt_err_t _interface_handler(ufunction_t func, ureq_t setup)
     RT_ASSERT(setup != RT_NULL);
 
     data = (struct vcom*)func->user_data;
-    
+
     switch(setup->bRequest)
     {
     case CDC_SEND_ENCAPSULATED_COMMAND:
@@ -485,16 +485,16 @@ static rt_err_t _function_enable(ufunction_t func)
     RT_DEBUG_LOG(RT_DEBUG_USB, ("cdc function enable\n"));
 
     _vcom_reset_state(func);
-    
+
     data = (struct vcom*)func->user_data;
     data->ep_out->buffer = rt_malloc(CDC_RX_BUFSIZE);
 
     data->ep_out->request.buffer = data->ep_out->buffer;
     data->ep_out->request.size = EP_MAXPACKET(data->ep_out);
-    
+
     data->ep_out->request.req_type = UIO_REQUEST_READ_BEST;
     rt_usbd_io_request(func->device, data->ep_out, &data->ep_out->request);
-    
+
     return RT_EOK;
 }
 
@@ -519,7 +519,7 @@ static rt_err_t _function_disable(ufunction_t func)
     if(data->ep_out->buffer != RT_NULL)
     {
         rt_free(data->ep_out->buffer);
-        data->ep_out->buffer = RT_NULL;        
+        data->ep_out->buffer = RT_NULL;
     }
 
     return RT_EOK;
@@ -540,7 +540,7 @@ static struct ufunction_ops ops =
  *
  * @return RT_EOK on successful.
  */
-static rt_err_t _cdc_descriptor_config(ucdc_comm_desc_t comm, 
+static rt_err_t _cdc_descriptor_config(ucdc_comm_desc_t comm,
     rt_uint8_t cintf_nr, ucdc_data_desc_t data, rt_uint8_t dintf_nr)
 {
     comm->call_mgmt_desc.data_interface = dintf_nr;
@@ -580,17 +580,17 @@ ufunction_t rt_usbd_function_cdc_create(udevice_t device)
     }
     /* set usb device string description */
     rt_usbd_device_set_string(device, _ustring);
-    
+
     /* create a cdc function */
     func = rt_usbd_function_new(device, &dev_desc, &ops);
     //not support HS
     //rt_usbd_device_set_qualifier(device, &dev_qualifier);
-    
+
     /* allocate memory for cdc vcom data */
     data = (struct vcom*)rt_malloc(sizeof(struct vcom));
     rt_memset(data, 0, sizeof(struct vcom));
     func->user_data = (void*)data;
-    
+
     /* initilize vcom */
     rt_usb_vcom_init(func);
 
@@ -640,7 +640,7 @@ ufunction_t rt_usbd_function_cdc_create(udevice_t device)
 
     /* add the cdc data interface to cdc function */
     rt_usbd_function_add_interface(func, intf_data);
-    
+
     return func;
 }
 
@@ -676,7 +676,7 @@ static int _vcom_getc(struct rt_serial_device *serial)
     rt_uint32_t level;
     struct ufunction *func;
     struct vcom *data;
-    
+
     func = (struct ufunction*)serial->parent.user_data;
     data = (struct vcom*)func->user_data;
 
@@ -913,7 +913,7 @@ static void rt_usb_vcom_init(struct ufunction *func)
     rt_err_t result = RT_EOK;
     struct serial_configure config;
     struct vcom *data = (struct vcom*)func->user_data;
-    
+
     /* initialize ring buffer */
     rt_ringbuffer_init(&data->rx_ringbuffer, data->rx_rbp, CDC_RX_BUFSIZE);
     rt_ringbuffer_init(&data->tx_ringbuffer, data->tx_rbp, CDC_TX_BUFSIZE);
@@ -947,9 +947,9 @@ static void rt_usb_vcom_init(struct ufunction *func)
                    vcom_thread_stack, VCOM_TASK_STK_SIZE,
                    16, 20);
     result = rt_thread_startup(&vcom_thread);
-    RT_ASSERT(result == RT_EOK);       
+    RT_ASSERT(result == RT_EOK);
 }
-struct udclass vcom_class = 
+struct udclass vcom_class =
 {
     .rt_usbd_function_create = rt_usbd_function_cdc_create
 };
